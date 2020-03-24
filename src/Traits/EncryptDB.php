@@ -17,7 +17,7 @@ trait EncryptDB
      */
     public function setAttribute($key, $value)
     {
-        if (!is_null($this->encryptDB) || in_array($key, $this->encryptDB)) {
+        if (! is_null($this->encryptDB) || in_array($key, $this->encryptDB)) {
             $value = Crypt::encrypt($value);
         }
 
@@ -31,11 +31,11 @@ trait EncryptDB
      */
     public function getAttribute($key)
     {
-        if (!is_null($this->encryptDB) || in_array($key, $this->encryptDB)) {
+        if (! is_null($this->encryptDB) || in_array($key, $this->encryptDB)) {
             try {
                 return Crypt::decrypt($this->attributes[$key]);
             } catch (DecryptException $e) {
-                echo 'Error: '.  $e->getMessage() ."\n";
+                echo 'Error: '.$e->getMessage()."\n";
             }
         }
 
@@ -52,7 +52,7 @@ trait EncryptDB
         $attributes = parent::attributesToArray();
 
         foreach ($attributes as $key => $value) {
-            if (!is_null($this->encryptDB) || in_array($key, $this->encryptDB)) {
+            if (! is_null($this->encryptDB) || in_array($key, $this->encryptDB)) {
                 $attributes[$key] = Crypt::encrypt($value);
             }
         }
