@@ -1,0 +1,23 @@
+{
+    "name": "premiumfastnet/lara-encrypt-db",
+    "description": "Encrypt and Decrypt Value to Database",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Premium Fast Network",
+            "email": "cs@premiumfast.net"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "laravel/framework": "6.*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "PremiumFastNetwork\\": "src/"
+        }
+    }
+}
