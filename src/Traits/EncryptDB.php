@@ -2,8 +2,8 @@
 
 namespace PremiumFastNetwork\EncryptDB\Traits;
 
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Crypt;
 
 trait EncryptDB
 {
