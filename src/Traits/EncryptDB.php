@@ -3,11 +3,10 @@
 namespace PremiumFastNetwork\EncryptDB\Traits;
 
 use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Crypt;
 
 trait EncryptDB
 {
-    protected $encryptDB = [];
-
     /**
      * Set a given attribute on the model.
      *
@@ -17,7 +16,7 @@ trait EncryptDB
      */
     public function setAttribute($key, $value)
     {
-        if (! is_null($this->encryptDB) || in_array($key, $this->encryptDB)) {
+        if (in_array($key, $this->encryptDB)) {
             $value = Crypt::encrypt($value);
         }
 
@@ -31,11 +30,11 @@ trait EncryptDB
      */
     public function getAttribute($key)
     {
-        if (! is_null($this->encryptDB) || in_array($key, $this->encryptDB)) {
+        if (in_array($key, $this->encryptDB)) {
             try {
                 return Crypt::decrypt($this->attributes[$key]);
             } catch (DecryptException $e) {
-                echo 'Error: '.$e->getMessage()."\n";
+                return $this->attributes[$key];
             }
         }
 
@@ -52,7 +51,7 @@ trait EncryptDB
         $attributes = parent::attributesToArray();
 
         foreach ($attributes as $key => $value) {
-            if (! is_null($this->encryptDB) || in_array($key, $this->encryptDB)) {
+            if (in_array($key, $this->encryptDB)) {
                 $attributes[$key] = Crypt::encrypt($value);
             }
         }
