@@ -24,7 +24,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use PremiumFastNetwork\EncryptDB\Traits\EncryptDB; // add this
+use PremiumFastNetwork\EncryptDB; // add this
 
 class User extends Authenticatable
 {
@@ -33,7 +33,7 @@ class User extends Authenticatable
     /**
      * List Attributes For Encrypt
      */
-    protected $encryptDB = [];
+    protected $encryptDB = ['token'];
 
     // rest of your model
 ```
