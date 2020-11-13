@@ -24,7 +24,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use PremiumFastNetwork\EncryptDB; // add this
+use PremiumFastNetwork\Traits\EncryptDB; // add this
 
 class User extends Authenticatable
 {

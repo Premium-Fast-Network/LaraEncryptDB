@@ -1,5 +1,7 @@
 <?php
 
+namespace PremiumFastNetwork\Traits;
+
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Crypt;
 
